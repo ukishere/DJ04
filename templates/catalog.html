@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Каталог{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="header">
+            <h1><a href="/catalog">Каталог</a></h1>
+        </div>
+
+        <div class="sort-block">
+            {# Здесь должен быть раздел с сортировкой #}
+            <a class="button button-primary" href="http://127.0.0.1:8000/catalog?sort=name">Имя</a>
+            <a class="button button-primary" href="http://127.0.0.1:8000/catalog?sort=higher">Цена↑</a>
+            <a class="button button-primary" href="http://127.0.0.1:8000/catalog?sort=lower">Цена↓</a>
+        </div>
+
+        <div class="content">
+            {# Здесь должен отображаться каталог с телефонами #}
+            <br>
+            {% for phone in Phones %}
+            <a class="button button-primary" href="http://127.0.0.1:8000/catalog/{{ phone.slug }}">{{ phone.name }}<br></a>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
